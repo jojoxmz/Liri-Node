@@ -1,11 +1,43 @@
 // require("dotenv").config();
 
 var keys = require("./keys.js");
+var Twitter = require('twitter');
+
 
 console.log(keys);
 
-var myTweets= function(){
-	console.log("tweet tweet");
+var myTweets= function(newTweet){
+
+	var client = new Twitter(keys.twitter);
+	var params = {screen_name: 'codemasterjz'};
+
+	if(newTweet){
+		//do this if user provides new tweet
+		// console.log("You want to Tweet out: " + newTweet);
+
+		client.post('statuses/update', {status: 'I Love Twitter'},  function(error, tweet, response) {
+			if(error) throw error;
+			console.log(tweet);  // Tweet body. 
+			console.log(response);  // Raw response object. 
+		});
+
+	} else{
+		//else print out 20 latest tweets
+
+		client.get('statuses/user_timeline', params, function(error, tweets, response) {
+		  	if (!error) {
+				var tweetCount = (tweets.length >= 20) ? 20 : tweets.length;
+
+		    // console.log(tweets);
+			    for (var i=0; i < tweetCount; i++){
+			    	console.log("");
+			    	console.log(tweets[i].text);
+			    	console.log("");
+			    	console.log("=============");
+			    }
+		    }
+		});
+	}
 }
 
 var mySong= function(){
@@ -27,7 +59,8 @@ var myRequest= function(){
 var liriMagic = function(mediaType, content){
   switch(mediaType){
     case "my-tweets":
-    	myTweets();
+
+    	myTweets(content);
     	break;
 
     case "spotify-this-song":

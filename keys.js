@@ -18,6 +18,7 @@ exports.twitter = {
 };
 
 // exports.spotify = {
-//   id: process.env.SPOTIFY_ID,
-//   secret: process.env.SPOTIFY_SECRET
+//   id: "1b802a33121742198bf4b01759183645",
+//   secret: "05fe078860a34d4fb103b4d1f3b10d8c"
 // };
+

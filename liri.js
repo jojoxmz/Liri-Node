@@ -146,20 +146,16 @@ var liriMagic = function(mediaType, content){
     	console.log("NO! WRONG!")
   };
 
-  	var fromTerminal= 
+	var newCommand = process.argv[2];
 
-	fs.appendFile(log, "fromTerminal", function(err) {
-
-	// If an error was experienced we say it.
-	if (err) {
-	console.log(err);
+	if (process.argv[3]) {
+		newCommand = newCommand + ",'" + process.argv[3] + "',";
 	}
 
-	// If no error is experienced, we'll log the phrase "Content Added" to our node console.
-	else {
-	console.log("Content Added!");
-	}
-
+	fs.appendFile("log.txt", newCommand, function(err) {
+		if (err) {
+		  console.log(err);
+		}
 	});
 };
 

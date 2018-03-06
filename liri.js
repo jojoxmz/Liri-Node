@@ -4,7 +4,7 @@ var Spotify = require("node-spotify-api");
 var request = require("request");
 var fs = require("fs");
 
-console.log(keys);
+// console.log(keys);
 
 var myTweets= function(newTweet){
 
@@ -17,8 +17,8 @@ var myTweets= function(newTweet){
 
 		client.post('statuses/update', {status: 'I Love Twitter'},  function(error, tweet, response) {
 			if(error) throw error;
-			console.log(tweet);  // Tweet body. 
-			console.log(response);  // Raw response object. 
+			// console.log(tweet);  // Tweet body. 
+			// console.log(response);  // Raw response object. 
 		});
 
 	} else{
